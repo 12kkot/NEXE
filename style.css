@@ -1,0 +1,485 @@
+/* ============================================
+   PERFORMANCE-FIRST CSS - ZERO LAG
+   Terminal/Brutalist Aesthetic
+   ============================================ */
+
+/* CSS VARIABLES */
+:root {
+    --bg: #000000;
+    --fg: #00ff00;
+    --accent: #00ff00;
+    --dim: #004400;
+    --border: #00ff00;
+    --warning: #ffff00;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Roboto Mono', monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* NO FANCY SCROLLBAR - PERFORMANCE */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dim);
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+/* ============================================
+   SCANLINE EFFECT - PURE CSS
+   ============================================ */
+.scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 0, 0.03),
+        rgba(0, 255, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 2px solid var(--border);
+}
+
+.terminal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.terminal-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.terminal-status {
+    font-size: 0.9rem;
+    color: var(--accent);
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.5; }
+}
+
+/* ============================================
+   MAIN
+   ============================================ */
+main {
+    padding-top: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.glitch-wrapper {
+    margin-bottom: 2rem;
+}
+
+.glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: 4px;
+    position: relative;
+    text-shadow: 
+        2px 2px 0 var(--accent),
+        -2px -2px 0 var(--accent);
+}
+
+.hero-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    letter-spacing: 3px;
+    margin-bottom: 3rem;
+    color: var(--dim);
+}
+
+.hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stat-box {
+    border: 2px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--bg);
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 2px;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.download-btn {
+    background: var(--bg);
+    border: 3px solid var(--accent);
+    color: var(--accent);
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.download-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.download-btn:active {
+    transform: scale(0.98);
+}
+
+.btn-bracket {
+    font-size: 1.4rem;
+}
+
+/* ============================================
+   FEATURES
+   ============================================ */
+.features {
+    padding: 4rem 0;
+    border-top: 2px solid var(--dim);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.section-marker {
+    font-size: 2rem;
+    color: var(--dim);
+}
+
+.section-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature {
+    border: 2px solid var(--dim);
+    padding: 1.5rem;
+    background: var(--bg);
+    transition: border-color 0.2s;
+}
+
+.feature:hover {
+    border-color: var(--accent);
+}
+
+.feature-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.feature-icon {
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+.feature h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+.feature p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--dim);
+}
+
+/* ============================================
+   DOWNLOAD SECTION
+   ============================================ */
+.download-section {
+    padding: 4rem 0;
+    border-top: 2px solid var(--dim);
+}
+
+.terminal-window {
+    border: 3px solid var(--border);
+    background: var(--bg);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.terminal-header {
+    background: var(--dim);
+    padding: 0.8rem 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border);
+}
+
+.terminal-body {
+    padding: 2rem;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.terminal-line {
+    margin-bottom: 0.5rem;
+}
+
+.prompt {
+    color: var(--accent);
+    margin-right: 0.5rem;
+}
+
+.terminal-output {
+    color: var(--dim);
+    margin-left: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.terminal-output.success {
+    color: var(--accent);
+}
+
+.cursor {
+    animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    50% { opacity: 0; }
+}
+
+.terminal-download {
+    width: 100%;
+    background: var(--bg);
+    border: none;
+    border-top: 2px solid var(--border);
+    color: var(--accent);
+    padding: 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.terminal-download:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.disclaimer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border: 2px solid var(--warning);
+    background: var(--bg);
+    color: var(--warning);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    border-top: 2px solid var(--dim);
+    padding: 3rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.footer-separator {
+    color: var(--dim);
+}
+
+.footer-year {
+    color: var(--dim);
+}
+
+.footer-right {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-right a {
+    color: var(--dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.footer-right a:hover {
+    color: var(--accent);
+}
+
+.footer-notice {
+    font-size: 0.75rem;
+    color: var(--dim);
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--dim);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    main {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .terminal-bar {
+        padding: 1rem;
+    }
+    
+    .hero-stats {
+        gap: 1rem;
+    }
+    
+    .stat-box {
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .terminal-body {
+        padding: 1.5rem 1rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-right {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .download-btn {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .stat-box {
+        width: 100%;
+    }
+}

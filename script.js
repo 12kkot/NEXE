@@ -5,7 +5,7 @@
 // GitHub Configuration
 const GITHUB_USER = '12kkot';  // Replace with your GitHub username
 const GITHUB_REPO = 'NEXE';  // Replace with your repo name
-const FILE_NAME = 'NEXE.External';  // Asset filename (must match release asset)
+const FILE_NAME = 'NEXE.External.exe';  // Asset filename (must match release asset)
 
 // GitHub Latest Release Download URL
 const DOWNLOAD_URL = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/releases/latest/download/${FILE_NAME}`;
